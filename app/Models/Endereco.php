@@ -9,4 +9,17 @@ class Endereco extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    protected $fillable = [
+            'rua',
+            'numero',
+            'bairro',
+            'complemento',
+            'cidade',
+            'estado',
+            'pais',
+            'cep',
+
+    ];
+
 }

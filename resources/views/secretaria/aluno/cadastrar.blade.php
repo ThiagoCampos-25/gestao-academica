@@ -166,7 +166,114 @@
                                 </span>
                             @enderror
                         </div>
+
+                        {{-- //Rua --}}
+                        <div class="form-group col-md-6">
+                            <label class="col-form-label">Rua</label>
+                            <input type="text" name="rua" value="{{ old('rua') }}"
+                                class="form-control @error('rua') is-invalid @enderror" id="inputSemestres"
+                                placeholder="Rua">
+                            @error('rua')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        {{-- //Número --}}
+                        <div class="form-group col-md-2">
+                            <label class="col-form-label">Número</label>
+                            <input type="text" name="numero" value="{{ old('numero') }}"
+                                class="form-control @error('numero') is-invalid @enderror" id="inputSemestres"
+                                placeholder="Número">
+                            @error('numero')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+
+                        {{-- //Bairro --}}
+                        <div class="form-group col-md-4">
+                            <label class="col-form-label">Bairro</label>
+                            <input type="text" name="bairro" value="{{ old('bairro') }}"
+                                class="form-control @error('bairro') is-invalid @enderror" id="bairro" placeholder="Bairro">
+                            @error('bairro')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        {{-- //Complemento --}}
+                        <div class="form-group col-md-6">
+                            <label class="col-form-label">Complemento</label>
+                            <input type="text" name="complemento" value="{{ old('complemento') }}"
+                                class="form-control @error('semestres') is-invalid @enderror" id="inputSemestres"
+                                placeholder="Complemento">
+                            @error('complemento')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        {{-- //Cidade --}}
+                        <div class="form-group col-md-3">
+                            <label class="col-form-label">Cidade</label>
+                            <input type="text" name="cidade" value="{{ old('cidade') }}"
+                                class="form-control @error('cidade') is-invalid @enderror" id="inputSemestres"
+                                placeholder="Cidade">
+                            @error('cidade')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+
+                        {{-- //Estado --}}
+                        <div class="form-group col-md-3">
+                            <label class="col-form-label">Estado</label>
+                            <input type="text" name="estado" value="{{ old('estado') }}"
+                                class="form-control @error('estado') is-invalid @enderror" id="inputSemestres"
+                                placeholder="Estado">
+                            @error('estado')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+
+                        {{-- //Pais --}}
+                        <div class="form-group col-md-3">
+                            <label class="col-form-label">Pais</label>
+                            <input type="text" name="pais" value="{{ old('pais') }}"
+                                class="form-control @error('pais') is-invalid @enderror" id="inputSemestres"
+                                placeholder="Pais">
+                            @error('pais')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        {{-- //CEP --}}
+                        <div class="form-group col-md-2">
+                            <label class="col-form-label">CEP</label>
+                            <input type="text" name="cep" value="{{ old('cep') }}"
+                                class="form-control @error('cep') is-invalid @enderror" id="inputSemestres"
+                                placeholder="CEP">
+                            @error('cep')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
+
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="inputTipoPerfil">Perfil</label>

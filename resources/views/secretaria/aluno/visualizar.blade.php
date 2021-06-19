@@ -162,78 +162,186 @@
                                 </span>
                             @enderror
                         </div>
+        
+
+                    {{-- //Rua --}}
+                    <div class="form-group col-md-6">
+                        <label class="col-form-label">Rua</label>
+                        <input disabled type="text" name="rua" value="{{ $pessoas_enderecos[0]->rua }}"
+                            class="form-control @error('rua') is-invalid @enderror" id="inputSemestres" placeholder="Rua">
+                        @error('rua')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="inputPerfil">Permissão</label>
-                            <select disabled name="permissao" id="permissao" class="form-control">
-                                @foreach ($aluno_roles as $role)
-                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputVinculoEmpregaticio">Vinculo Empregaticio</label>
-                            <input disabled type="text" name="vinculo"
-                                class="col-12 form-control @error('vinculo_empregaticio') is-invalid @enderror"
-                                id="vinculo_empregraticio" placeholder="Não Possui">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputVinculoEmpregaticio">Perfil</label>
-                            <select disabled name="tipo_perfil_id" id="tipo_perfil_id"
-                                class="selectOtion form-control col-12">
-                                @foreach ($aluno_tipo_perfis as $tipo_perfil)
-                                    @if ($aluno_pessoa[0]->tipo_perfil_id == $tipo_perfil->id)
-                                        <option selected value="{{ $tipo_perfil->id }}">
-                                            {{ $tipo_perfil->nome_perfil }}
-                                        </option>
-                                    @else
-                                    @endif
-                                    <option value="{{ $tipo_perfil->id }}">{{ $tipo_perfil->nome_perfil }}</option>
-                                @endforeach
-                            </select>
-                            @error('tipo_perfil_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                    {{-- //Número --}}
+                    <div class="form-group col-md-2">
+                        <label class="col-form-label">Número</label>
+                        <input disabled type="text" name="numero" value="{{ $pessoas_enderecos[0]->numero }}"
+                            class="form-control @error('numero') is-invalid @enderror" id="inputSemestres"
+                            placeholder="Número">
+
+                        @error('numero')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="inputEmail">Email</label>
-                            <input disabled type="text" name="email" value="{{ $aluno_usuarios->email }}"
-                                class="form-control @error('email') is-invalid @enderror" id="inputSemestres"
-                                placeholder="E-mail">
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-2">
-                            <label class="col-12">Ativo</label>
-                            @if ($aluno_usuarios->is_activated == 1)
-                                <label class="switch ">
-                                    <input disabled type="checkbox" checked name="is_activated" id="togBtn">
-                                    <div class="slider round"></div>
-                                </label>
+                    {{-- //Bairro --}}
+                    <div class="form-group col-md-4">
+                        <label class="col-form-label">Bairro</label>
+                        <input disabled type="text" name="bairro" value="{{ $pessoas_enderecos[0]->bairro }}"
+                            class="form-control @error('bairro') is-invalid @enderror" id="inputSemestres"
+                            placeholder="Bairro">
+
+                        @error('bairro')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    {{-- //Complemento --}}
+                    <div class="form-group col-md-6">
+                        <label class="col-form-label">Complemento</label>
+                        <input disabled type="text" name="complemento" value="{{ $pessoas_enderecos[0]->complemento }}"
+                            class="form-control @error('semestres') is-invalid @enderror" id="inputSemestres"
+                            placeholder="Complemento">
+
+                        @error('complemento')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    {{-- //Cidade --}}
+                    <div class="form-group col-md-3">
+                        <label class="col-form-label">Cidade</label>
+                        <input disabled type="text" name="cidade" value="{{ $pessoas_enderecos[0]->cidade }}"
+                            class="form-control @error('cidade') is-invalid @enderror" id="inputSemestres"
+                            placeholder="Cidade">
+
+                        @error('cidade')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    {{-- //Estado --}}
+                    <div class="form-group col-md-3">
+                        <label class="col-form-label">Estado</label>
+                        <input disabled type="text" name="estado" value="{{ $pessoas_enderecos[0]->estado }}"
+                            class="form-control @error('estado') is-invalid @enderror" id="inputSemestres"
+                            placeholder="Estado">
+
+                        @error('estado')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="col-form-label">Pais</label>
+                        {{-- //Pais --}}
+                        <input disabled type="text" name="pais" value="{{ $pessoas_enderecos[0]->pais }}"
+                            class="form-control @error('pais') is-invalid @enderror" id="inputSemestres" placeholder="Pais">
+
+                        @error('pais')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    {{-- //CEP --}}
+                    <div class="form-group col-md-2">
+                        <label class="col-form-label">CEP</label>
+                        <input disabled type="text" name="cep" value="{{ $aluno_pessoa[0]->cep }}"
+                            class="form-control @error('cep') is-invalid @enderror" id="inputSemestres" placeholder="CEP">
+
+                        @error('cep')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="inputPerfil">Permissão</label>
+                    <select disabled name="permissao" id="permissao" class="form-control">
+                        @foreach ($aluno_roles as $role)
+                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputVinculoEmpregaticio">Vinculo Empregaticio</label>
+                    <input disabled type="text" name="vinculo"
+                        class="col-12 form-control @error('vinculo_empregaticio') is-invalid @enderror"
+                        id="vinculo_empregraticio" placeholder="Não Possui">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputVinculoEmpregaticio">Perfil</label>
+                    <select disabled name="tipo_perfil_id" id="tipo_perfil_id" class="selectOtion form-control col-12">
+                        @foreach ($aluno_tipo_perfis as $tipo_perfil)
+                            @if ($aluno_pessoa[0]->tipo_perfil_id == $tipo_perfil->id)
+                                <option selected value="{{ $tipo_perfil->id }}">
+                                    {{ $tipo_perfil->nome_perfil }}
+                                </option>
                             @else
-                                <label class="switch ">
-                                    <input disabled type="checkbox" name="is_activated" id="togBtn">
-                                    <div class="slider round"></div>
-                                </label>
                             @endif
-                        </div>
-                    </div>
+                            <option value="{{ $tipo_perfil->id }}">{{ $tipo_perfil->nome_perfil }}</option>
+                        @endforeach
+                    </select>
+                    @error('tipo_perfil_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
 
-                    <div class="mt-4 d-flex justify-content-end">
-                        <a href="{{ route('aluno.edit', $aluno->id) }}" class="btn btn-success mr-1">Editar</a>
-                        <button type="button" class="btn btn-danger mr-1 deleteModalTarget" data-id="{{ $aluno->id }}"
-                            data-toggle="modal" data-target="#deleteModal">Excluir</button>
-                        <a href="{{ route('aluno.index') }}" class="btn btn-primary">Voltar</a>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="inputEmail">Email</label>
+                    <input disabled type="text" name="email" value="{{ $aluno_usuarios->email }}"
+                        class="form-control @error('email') is-invalid @enderror" id="inputSemestres" placeholder="E-mail">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="col-2">
+                    <label class="col-12">Ativo</label>
+                    @if ($aluno_usuarios->is_activated == 1)
+                        <label class="switch ">
+                            <input disabled type="checkbox" checked name="is_activated" id="togBtn">
+                            <div class="slider round"></div>
+                        </label>
+                    @else
+                        <label class="switch ">
+                            <input disabled type="checkbox" name="is_activated" id="togBtn">
+                            <div class="slider round"></div>
+                        </label>
+                    @endif
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-end">
+                <a href="{{ route('aluno.edit', $aluno->id) }}" class="btn btn-success mr-1">Editar</a>
+                <button type="button" class="btn btn-danger mr-1 deleteModalTarget" data-id="{{ $aluno->id }}"
+                    data-toggle="modal" data-target="#deleteModal">Excluir</button>
+                <a href="{{ route('aluno.index') }}" class="btn btn-primary">Voltar</a>
                 </form>
             </div>
         </div>

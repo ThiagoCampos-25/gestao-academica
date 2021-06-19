@@ -9,4 +9,12 @@ class pessoas_endereco extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    protected $fillable = [
+
+        'pessoa_id',
+        'endereco_id',
+
+
+    ];
 }

@@ -11,6 +11,7 @@ use App\Models\Curso;
 use App\Models\Endereco;
 use App\Models\pessoas_endereco;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 use Illuminate\Validation\ValidationException;
 use App\Services\AlunoService;
 use Exception;
@@ -62,6 +63,7 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {   
+        
         $data = $request->only([
             'matricula',
             'nome',
@@ -75,15 +77,24 @@ class AlunoController extends Controller
             'titulo_eleitor',
             'reservista',
             'carteira_trabalho',
-            'email',
-            
-            ]);
+            'rua',
+            'numero',
+            'bairro',
+            'complemento',
+            'cidade',
+            'estado',
+            'pais',
+            'cep',
+            'email'
+        ]);
 
+        
         
             try {
                 $this->alunoService->criar($data, $request);
     
             } catch (Exception $e) {
+                
                 
 
                 throw ValidationException::withMessages(json_decode($e->getMessage(), true));
@@ -103,20 +114,25 @@ class AlunoController extends Controller
     {
         $aluno = Aluno::find($id);
         $aluno_pessoa = Pessoa::where('id', '=', $aluno->pessoa_id)->get();
+        $aluno_enderecos_id = DB::table('pessoas_enderecos')->where('pessoa_id', '=', $aluno->pessoa_id)->get();
+        $aluno_enderecos = Endereco::where('id', '=', $aluno_enderecos_id[0]->endereco_id)->get();
         $aluno_usuarios = User::find($aluno_pessoa[0]->user_id);
         $aluno_Cursos = Curso::find($aluno->curso_id)->get();
         $aluno_tipo_perfis = DB::table('tipo_perfils')->get();
 
         $aluno_roles = DB::table('roles')->get();
         return view('secretaria.aluno.visualizar',
-        ['aluno_pessoa'=>$aluno_pessoa,
+        ['pessoas_enderecos'=>$aluno_enderecos,
+        'aluno_pessoa'=>$aluno_pessoa,
         'aluno'=>$aluno,
+        'aluno_enderecos'=>$aluno_enderecos,
         'aluno_usuarios'=>$aluno_usuarios,
         'aluno_Cursos'=>$aluno_Cursos,
         'aluno_roles'=>$aluno_roles,
         'aluno_tipo_perfis'=>$aluno_tipo_perfis
         
         ]);
+       
     }
 
 
@@ -130,24 +146,32 @@ class AlunoController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+   
     public function edit($id)
+    
     {
+       
         $aluno = Aluno::find($id);
         $aluno_pessoa = Pessoa::where('id', '=', $aluno->pessoa_id)->get();
+        $aluno_enderecos_id = DB::table('pessoas_enderecos')->where('pessoa_id', '=', $aluno->pessoa_id)->get();
+        $aluno_enderecos = Endereco::where('id', '=', $aluno_enderecos_id[0]->endereco_id)->get();
         $aluno_usuarios = User::find($aluno_pessoa[0]->user_id);
         $aluno_Cursos = Curso::find($aluno->curso_id)->get();
         $aluno_tipo_perfis = DB::table('tipo_perfils')->get();
 
         $aluno_roles = DB::table('roles')->get();
         return view('secretaria.aluno.editar',
-        ['aluno_pessoa'=>$aluno_pessoa,
+        ['pessoas_enderecos'=>$aluno_enderecos,
+        'aluno_pessoa'=>$aluno_pessoa,
         'aluno'=>$aluno,
+        'aluno_enderecos'=>$aluno_enderecos,
         'aluno_usuarios'=>$aluno_usuarios,
         'aluno_Cursos'=>$aluno_Cursos,
         'aluno_roles'=>$aluno_roles,
         'aluno_tipo_perfis'=>$aluno_tipo_perfis
         
         ]);
+        
     }
 
     /**
@@ -160,6 +184,8 @@ class AlunoController extends Controller
     public function update(Request $request, $id)
 
     {
+        
+            
         $data = $request->only([
             'matricula',
             'nome',
@@ -182,17 +208,16 @@ class AlunoController extends Controller
             'pais',
             'cep',
             'email',
-            ]);
-            
+        ]);
             
                
-            // dd($data,$id,$request);
+           
              try { 
-            $this->alunoService->editar($data,$id,$request);
+            $this->alunoService->editar($data, $id, $request);
           
 
         } catch (Exception $e) {
-        
+            // dd($e->getMessage());
 
             throw ValidationException::withMessages(json_decode($e->getMessage(), true));
             

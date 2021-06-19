@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\Pessoa;
 use App\Models\User;
+use App\Models\Endereco;
+use App\Models\pessoas_endereco;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\DB;
@@ -56,9 +58,16 @@ class AlunoService
         //     'titulo_eleitor',
         //     'reservista',
         //     'carteira_trabalho',
-        //     'email',
-            
-        //     ]);
+        //     'rua',
+        //     'numero',
+        //     'bairro',
+        //     'complemento',
+        //     'cidade',
+        //     'estado',
+        //     'pais',
+        //     'cep',
+        //     'email'
+        // ]);
 
             $validator = Validator::make($data, [
                 'matricula'=>'required|numeric',
@@ -73,15 +82,15 @@ class AlunoService
                  'titulo_eleitor'=>'required|numeric',
                 'reservista'=>'required|numeric',
                  'carteira_trabalho'=>'required|numeric',
-                 'rua' => 'required',
-                'numero' => 'required',
-                'bairro' => 'required',
-                'complemento' => 'required',
-                'cidade' => 'required',
-                'estado' => 'required',
-                'pais' => 'required',
-                'cep' => 'required',
-                 'email'=>'required',
+                 'rua'=> 'required',
+                'numero'=> 'required',
+                'bairro'=> 'required',
+                'complemento'=> 'required',
+                'cidade'=> 'required',
+                'estado'=> 'required',
+                'pais'=> 'required',
+                'cep'=> 'required',
+                 'email'=>'required'
                 
                  ]);
                  if ($validator->fails()) {
@@ -167,9 +176,16 @@ class AlunoService
         //     'titulo_eleitor',
         //     'reservista',
         //     'carteira_trabalho',
-        //     'email',
-          
-        //     ]);
+        //     'rua',
+        //     'numero',
+        //     'bairro',
+        //     'complemento',
+        //     'cidade',
+        //     'estado',
+        //     'pais',
+        //     'cep',
+        //     'email'
+        // ]);
 
             $validator = Validator::make($data, [
                 'matricula'=>'required|numeric',
@@ -218,7 +234,7 @@ class AlunoService
                 $pessoa->carteira_trabalho = $request->carteira_trabalho;
                 $pessoa->tipo_perfil_id = $request->tipo_perfil_id;
                
-                $pessoa->update();
+                $pessoa->save();
 
                 $pessoa_endereco =  pessoas_endereco::where('pessoa_id','=',$id)->get();
                 $endereco = Endereco::find($pessoa_endereco[0]->endereco_id);
